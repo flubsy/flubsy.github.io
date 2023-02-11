@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random role & Spec generator</title>
+</head>
+<body>
+	<h1>Random role & Spec generator</h1>
+	<p>Want to spice up your weekly keys? click the button below:</p>
+	<button onclick="generateClass()">Generate Class</button>
+	<p id="result"></p>
+
+	<script>
+		function generateClass() {
+			var roles = ["Tank", "DPS", "Healer"];
+			var tankSpecializations = ["Blood DK", "Guardian Druid", "Protection Paladin", "Protection Warrior", "Vengeance DH", "Brewmaster Monk"];
+			var dpsSpecializations = ["Unholy DK", "Frost DK", "Fury Warrior", "Feral Druid", "Arms Warrior", "Devastation Evoker", "Havoc DH", "Fire Mage", "Frost Mage", "Arcane Mage", "Enhancement Shaman", "Elemental Shaman", "Outlaw Rogue", "Sublety Rogue", "Assassination Rogue", "Windwalker Monk", "Balance Druid","Survival Hunter", "Beast Mastery Hunter", "Marksman Hunter", "Retribution Paladin"];
+			var healerSpecializations = ["Restoration Shaman", "Preservation Evoker", "Mistweaver Monk", "Restoration Druid", "Restoration Shaman", "Holy Paladin", "Holy Priest", "Discipline Priest"];
+
+			var result = document.getElementById("result");
+
+			var roleIndex = Math.floor(Math.random() * roles.length);
+			var role = roles[roleIndex];
+
+			if (role == "Tank") {
+				var specialization = tankSpecializations[Math.floor(Math.random() * tankSpecializations.length)];
+			} else if (role == "DPS") {
+				var specialization = dpsSpecializations[Math.floor(Math.random() * dpsSpecializations.length)];
+			} else if (role == "Healer") {
+				var specialization = healerSpecializations[Math.floor(Math.random() * healerSpecializations.length)];
+			}
+
+			result.innerHTML = role + ": " + specialization;
+		}
+	</script>
+</body>
+</html>
