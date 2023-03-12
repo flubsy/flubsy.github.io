@@ -1,40 +1,57 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Random role & Spec generator</title>
-	<link rel="stylesheet" href="css/styles.css">
-	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-	<h1>Random role & Spec generator</h1>
-	<p>Want to spice up your weekly keys? click the button below:</p>
-	<button onclick="generateClass()">Generate Class</button>
-	<p id="result"></p>
+  <head>
+    <title>Yu-Gi-Oh! Card Search</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h1>Yu-Gi-Oh! Card Search</h1>
 
-	<script>
-		function generateClass() {
-			var roles = ["Tank", "DPS", "Healer"];
-			var tankSpecializations = ["Blood DK", "Guardian Druid", "Protection Paladin", "Protection Warrior", "Vengeance DH", "Brewmaster Monk"];
-			var dpsSpecializations = ["Unholy DK", "Frost DK", "Fury Warrior", "Feral Druid", "Arms Warrior", "Devastation Evoker", "Havoc DH", "Fire Mage", "Frost Mage", "Arcane Mage", "Enhancement Shaman", "Elemental Shaman", "Outlaw Rogue", "Sublety Rogue", "Assassination Rogue", "Windwalker Monk", "Balance Druid","Survival Hunter", "Beast Mastery Hunter", "Marksman Hunter", "Retribution Paladin"];
-			var healerSpecializations = ["Restoration Shaman", "Preservation Evoker", "Mistweaver Monk", "Restoration Druid", "Restoration Shaman", "Holy Paladin", "Holy Priest", "Discipline Priest"];
+    <label for="search-input">Search for a card:</label>
+    <input type="text" id="search-input">
 
-			var result = document.getElementById("result");
+    <div id="search-results"></div>
 
-			var roleIndex = Math.floor(Math.random() * roles.length);
-			var role = roles[roleIndex];
+    <script>
+        const apiKey = '81faf854784fc35c2b1fbcd476ba92019065df84068342b820ff8f8b69fd97e7';
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
 
-			if (role == "Tank") {
-				var specialization = tankSpecializations[Math.floor(Math.random() * tankSpecializations.length)];
-			} else if (role == "DPS") {
-				var specialization = dpsSpecializations[Math.floor(Math.random() * dpsSpecializations.length)];
-			} else if (role == "Healer") {
-				var specialization = healerSpecializations[Math.floor(Math.random() * healerSpecializations.length)];
-			}
+        searchInput.addEventListener('input', () => {
+          const searchTerm = searchInput.value.trim();
 
-			result.innerHTML = role + ": " + specialization;
-		}
-	</script>
-</body>
+            if (searchTerm.length > 0) {
+             fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?name=${searchTerm}&apikey=${apiKey}`)
+                 .then(response => response.json())
+                 .then(data => {
+              searchResults.innerHTML = '';
+
+        data.forEach(card => {
+          const cardElement = document.createElement('div');
+          cardElement.classList.add('card');
+
+          const imageElement = document.createElement('img');
+          imageElement.src = card.card_images[0].image_url_small;
+          cardElement.appendChild(imageElement);
+
+          const nameElement = document.createElement('p');
+          nameElement.textContent = card.name;
+          cardElement.appendChild(nameElement);
+
+          const descElement = document.createElement('p');
+          descElement.textContent = card.desc;
+          cardElement.appendChild(descElement);
+
+          searchResults.appendChild(cardElement);
+        });
+      })
+      .catch(error => console.error(error));
+  } else {
+    searchResults.innerHTML = '';
+  }
+});
+
+    </script>
+  </body>
 </html>
