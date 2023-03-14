@@ -1,57 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Yu-Gi-Oh! Card Search</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random WoW Spec Generator</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <h1>Yu-Gi-Oh! Card Search</h1>
-
-    <label for="search-input">Search for a card:</label>
-    <input type="text" id="search-input">
-
-    <div id="search-results"></div>
-
-    <script>
-        const apiKey = '81faf854784fc35c2b1fbcd476ba92019065df84068342b820ff8f8b69fd97e7';
-        const searchInput = document.getElementById('search-input');
-        const searchResults = document.getElementById('search-results');
-
-        searchInput.addEventListener('input', () => {
-          const searchTerm = searchInput.value.trim();
-
-            if (searchTerm.length > 0) {
-             fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?name=${searchTerm}&apikey=${apiKey}`)
-                 .then(response => response.json())
-                 .then(data => {
-              searchResults.innerHTML = '';
-
-        data.forEach(card => {
-          const cardElement = document.createElement('div');
-          cardElement.classList.add('card');
-
-          const imageElement = document.createElement('img');
-          imageElement.src = card.card_images[0].image_url_small;
-          cardElement.appendChild(imageElement);
-
-          const nameElement = document.createElement('p');
-          nameElement.textContent = card.name;
-          cardElement.appendChild(nameElement);
-
-          const descElement = document.createElement('p');
-          descElement.textContent = card.desc;
-          cardElement.appendChild(descElement);
-
-          searchResults.appendChild(cardElement);
-        });
-      })
-      .catch(error => console.error(error));
-  } else {
-    searchResults.innerHTML = '';
-  }
-});
-
-    </script>
+    <div class="container">
+    <h1>Random WoW Spec Generator</h1>
+    
+    <p>Select one or more classes:</p>
+    <div class="form-container">
+      <form>
+        <div class="checkbox-container">
+          <label>
+            <input type="checkbox" name="class" value="Death Knight">Death Knight
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Demon Hunter">Demon Hunter
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Druid">Druid
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Evoker">Evoker
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Hunter">Hunter
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Mage">Mage
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Monk">Monk
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Paladin">Paladin
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Priest">Priest
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Rogue">Rogue
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Shaman">Shaman
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Warlock">Warlock
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Warrior">Warrior
+          </label>
+        </div>
+      </form>
+      <button onclick="generateRandomSpec()" id="generate-random-spec-button">Generate Random Spec</button>
+    </div>
+    <p id="result"></p>
+    <img id="spec-image" src="" alt="" />
+    <script src="app.js"></script>
+    </div>
   </body>
 </html>
+    
