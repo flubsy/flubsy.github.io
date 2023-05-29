@@ -12,6 +12,10 @@
   html, body {
     margin: 0;
     padding: 0;
+      height: 100%;
+      background-color: #808080;
+      font-family: 'Montserrat', sans-serif !important;  
+      cursor: url(rainbow-cursor.gif), auto;
   }
 
   .form-container {
@@ -96,4 +100,84 @@
   img:hover {
     cursor: url(rainbow-cursor.gif), auto;
     transform: scale(1.1);
+  }
+  
+  header {
+    background-color: #333;
+    height: 50px;
+  }
+  
+  .navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .navbar li {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .navbar li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+  } 
+  
+  .portfolio-info {
+    text-align: center;
+    padding: 50px;
+    color: #fff;
+  }
+
+  .skills-info {
+    text-align: center;
+    padding: 50px;
+    color: #fff;
+  }
+
+  .skills-list {
+    display: inline-block;
+    list-style-position: inside;
+    padding-inline-start: 0;
+    text-align: left;
+  }
+
+  .about-me {
+    text-align: center;
+    padding: 50px;
+    color: #fff;
+  }
+
+  main {
+    flex-grow: 1;
+  }
+
+footer {
+  background-color: #333;
+  padding: 20px;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .social-icons a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 5px;
+    margin: 0 5px;
   }

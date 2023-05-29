@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Random WoW Spec Generator</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="navbar">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="randomizer.html">WoW Randomizer</a></li>
+          <li><a href="about-me.html">About Me</a></li>
+          <li><a href="blog.html">Blog</a></li>
+              <!-- Add more project links here -->
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+    <h1>Random WoW Spec Generator</h1>
+    
+    <p>Select one or more classes that you wish to randomize:</p>
+    <h4>select none to randomize all</h3>
+    <div class="form-container">
+      <form>
+        <div class="checkbox-container">
+          <label>
+            <input type="checkbox" name="class" value="Death Knight">Death Knight
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Demon Hunter">Demon Hunter
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Druid">Druid
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Evoker">Evoker
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Hunter">Hunter
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Mage">Mage
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Monk">Monk
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Paladin">Paladin
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Priest">Priest
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Rogue">Rogue
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Shaman">Shaman
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Warlock">Warlock
+          </label>
+          <label>
+            <input type="checkbox" name="class" value="Warrior">Warrior
+          </label>
+        </div>
+      </form>
+      <button onclick="generateRandomSpec()" id="generate-random-spec-button">Generate Random Spec</button>
+    </div>
+    <p id="result"></p>
+    <img id="spec-image" src="" alt="" />
+    <script src="app.js"></script>
+    </div>
+    <footer>
+      <div class="social-icons">
+        <a href="https://twitter.com/pogmachine81" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.twitch.tv/flubsyxd" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-twitch"></i>
+        </a>
+        <a href="https://www.youtube.com/channel/UCcpzYm7LkN0T0owrDwyxdSg" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/matthew-conroy-b3b831174/" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://www.instagram.com/mett.con" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>
+    

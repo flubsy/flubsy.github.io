@@ -54,36 +54,77 @@ const createSpecImage ={
     "Fury" : "warrior-fury.jpg",
     "Protection W" : "warrior-protection.jpg"
 }
+//working app
+    // function generateRandomSpec() {
+    //     // Get selected classes
+    //     const selectedClasses = document.querySelectorAll('input[name="class"]:checked');
+      
+    //     if (selectedClasses.length === 0) {
+    //       document.getElementById('result').textContent = 'Please select a class.';
+    //       return;
+    //     }
+      
+    //     // Create an array to store all available specs for selected classes
+    //     const specs = [];
+      
+    //     // Loop through selected classes and get available specs for each class
+    //     selectedClasses.forEach((selectedClass) => {
+    //       const className = selectedClass.value;
+    //       const classSpecs = wowClasses[selectedClass.value];
+    //       specs.push(...classSpecs);
+    //     });
+      
+    //     // Select a random spec from the array of available specs
+    //     const randomIndex = Math.floor(Math.random() * specs.length);
+    //     const randomSpec = specs[randomIndex];
+      
+    //     const specImage = createSpecImage[randomSpec];
+    //     const imageElement = document.createElement("img");
+    //     imageElement.src = `spec-images/${specImage}`;
+        
+    //     const resultElement = document.getElementById("result");
+    //     resultElement.innerHTML = "";
+    //     resultElement.insertAdjacentHTML("beforeend", `<p>${randomSpec}</p>`);
+    //     resultElement.appendChild(imageElement);
+    //   }
 
     function generateRandomSpec() {
-        // Get selected classes
-        const selectedClasses = document.querySelectorAll('input[name="class"]:checked');
-      
+      // Get selected classes
+      let selectedClasses = document.querySelectorAll('input[name="class"]:checked');
+    
+      // Check if no classes are selected
+      if (selectedClasses.length === 0) {
+        // Select all classes
+        selectedClasses = document.querySelectorAll('input[name="class"]');
+        // Check if no classes are available
         if (selectedClasses.length === 0) {
-          document.getElementById('result').textContent = 'Please select a class.';
+          document.getElementById('result').textContent = 'No classes available.';
           return;
         }
-      
-        // Create an array to store all available specs for selected classes
-        const specs = [];
-      
-        // Loop through selected classes and get available specs for each class
-        selectedClasses.forEach((selectedClass) => {
-          const className = selectedClass.value;
-          const classSpecs = wowClasses[selectedClass.value];
-          specs.push(...classSpecs);
-        });
-      
-        // Select a random spec from the array of available specs
-        const randomIndex = Math.floor(Math.random() * specs.length);
-        const randomSpec = specs[randomIndex];
-      
-        const specImage = createSpecImage[randomSpec];
-        const imageElement = document.createElement("img");
-        imageElement.src = `spec-images/${specImage}`;
-        
-        const resultElement = document.getElementById("result");
-        resultElement.innerHTML = "";
-        resultElement.insertAdjacentHTML("beforeend", `<p>${randomSpec}</p>`);
-        resultElement.appendChild(imageElement);
       }
+    
+      // Create an array to store all available specs for selected classes
+      const specs = [];
+    
+      // Loop through selected classes and get available specs for each class
+      selectedClasses.forEach((selectedClass) => {
+        const className = selectedClass.value;
+        const classSpecs = wowClasses[selectedClass.value];
+        specs.push(...classSpecs);
+      });
+    
+      // Select a random spec from the array of available specs
+      const randomIndex = Math.floor(Math.random() * specs.length);
+      const randomSpec = specs[randomIndex];
+    
+      const specImage = createSpecImage[randomSpec];
+      const imageElement = document.createElement("img");
+      imageElement.src = `spec-images/${specImage}`;
+    
+      const resultElement = document.getElementById("result");
+      resultElement.innerHTML = "";
+      resultElement.insertAdjacentHTML("beforeend", `<p>${randomSpec}</p>`);
+      resultElement.appendChild(imageElement);
+    }
+    
+    
