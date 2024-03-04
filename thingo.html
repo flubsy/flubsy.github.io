@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last Epoch Randomizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            margin-bottom: 20px; /* Add space between title and button */
+        }
+        
+        #result {
+            text-align: center;
+            font-size: 24px;
+            line-height: 1.5;
+        }
+        
+        button {
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Last Epoch Class & Mastery Randomizer</h1>
+    <button onclick="randomize()">Randomize</button>
+    <div id="result"></div>
+
+    <script>
+        const classes = ["Mage", "Rogue", "Primalist", "Acolyte", "Sentinel"];
+        const masteries = {
+            "Mage": ["Sorcerer", "Spellblade", "Runemaster"],
+            "Rogue": ["Falconer", "Marksman", "Bladedancer"],
+            "Primalist": ["Druid", "Beastmaster", "Shaman"],
+            "Acolyte": ["Warlock", "Necromancer", "Lich"],
+            "Sentinel": ["Paladin", "Void Knight", "Forge Guard"]
+        };
+
+        function randomize() {
+            const randomClassIndex = Math.floor(Math.random() * classes.length);
+            const chosenClass = classes[randomClassIndex];
+            let chosenMastery;
+            if (chosenClass in masteries) {
+                chosenMastery = masteries[chosenClass][Math.floor(Math.random() * 3)];
+            } else {
+                chosenMastery = "Invalid class selected";
+            }
+            document.getElementById("result").innerHTML = `${chosenMastery}<br>${chosenClass}`;
+        }
+    </script>
+</body></html>
